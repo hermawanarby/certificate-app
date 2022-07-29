@@ -7,17 +7,11 @@
     <div class="col-md-6">
         <form action="/sertifikat" method="GET">
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Enter Certificate ID" name="validate">
+                <input type="text" class="form-control" placeholder="Enter Certificate ID" name="search">
                 <button class="btn btn-primary" type="submit">VALIDATE</button>
             </div>
         </form>
     </div>
 </div>
-
-{{-- @if ()
-    
-@else
-    <p class="text-center fs-4">Data Not Found</p>
-@endif --}}
 
 @endsection

@@ -18,4 +18,4 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/sertifikat', [CertificateController::class, 'index']);
+Route::get('/sertifikat', [CertificateController::class, 'search']);

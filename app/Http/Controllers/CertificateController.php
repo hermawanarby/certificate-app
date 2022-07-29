@@ -7,9 +7,12 @@ use Illuminate\Http\Request;
 
 class CertificateController extends Controller
 {
-    public function index()
+    public function search(Request $request)
     {
-      $sertifikat = Certificate::all();
-      return view('sertifikat', compact(['sertifikat']));
+        if ($request->search == null) {
+            return view('/sertifikat');
+        }
+        $certificate = Certificate::all()->where('sertifikat_id','=',($request->search));
+        return view('sertifikat',['sertifikat'=>$certificate]);
     }
 }
