@@ -1,8 +1,11 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
         <a class="navbar-brand" href="/"><i class="bi bi-award-fill"></i> CERTIFICATE APP</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
+    
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a href="/login" class="nav-link"><i class="bi bi-box-arrow-in-right"></i> Login</a>
+            </li>
+        </ul>
     </div>
 </nav>

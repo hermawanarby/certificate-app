@@ -1,7 +1,9 @@
 <?php
 
-use App\Http\Controllers\CertificateController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\CertificateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +21,6 @@ Route::get('/', function () {
 });
 
 Route::get('/sertifikat', [CertificateController::class, 'search']);
+
+Route::get('/login', [LoginController::class, 'index']);
+Route::get('/register', [RegisterController::class, 'index']);
