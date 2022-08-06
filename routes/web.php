@@ -16,11 +16,19 @@ use App\Http\Controllers\CertificateController;
 |
 */
 
+// Route untuk menampilkan halaman home
 Route::get('/', function () {
     return view('home');
 });
 
+// Route untuk menampilkan sertifikat
 Route::get('/sertifikat', [CertificateController::class, 'search']);
 
+// Route untuk menampilkan login
 Route::get('/login', [LoginController::class, 'index']);
+
+// Route untuk menampilkan register
 Route::get('/register', [RegisterController::class, 'index']);
+
+// Route untuk menjalankan fungsi register
+Route::post('/register', [RegisterController::class, 'store']);
