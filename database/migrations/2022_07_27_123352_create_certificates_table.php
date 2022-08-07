@@ -17,8 +17,8 @@ class CreateCertificatesTable extends Migration
             $table->id();
             $table->string('sertifikat_id');
             $table->string('nama');
-            $table->string('partisipan');
-            $table->text('tema');
+            $table->enum('partisipan', ['Narasumber', 'Peserta']);
+            $table->string('tema');
             $table->date('tanggal');
         });
     }
