@@ -5,6 +5,13 @@
         <h1 class="h2">Certificates</h1>
     </div>
 
+    @if (session()->has('success'))
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    @endif
+
     <div class="table-responsive">
       <a href="/dashboard/certificates/create" class="btn btn-success btn-sm mb-3"><span data-feather="plus"></span> Tambah data sertifikat</a>
       <table class="table table-striped table-sm">

@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Certificate extends Model
 {
     use HasFactory;
+
+    // Field yang tidak  boleh disii secara masal
+    protected $guarded = ['id'];
 }
