@@ -31,7 +31,10 @@ class DashboardCertificateController extends Controller
     // Method create berfungsi untuk tambah data
     public function create()
     {
-        //
+        // Berfungsi untuk menampilkan data sertifikat
+        return view('dashboard.certificates.create', [
+            'pastisipants' => Certificate::all()
+        ]);
     }
 
     /**
@@ -44,7 +47,7 @@ class DashboardCertificateController extends Controller
     // Method store berfungsi untuk menjalakan fitur tambah data
     public function store(Request $request)
     {
-        //
+        return $request;
     }
 
     /**
