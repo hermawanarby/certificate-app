@@ -33,7 +33,7 @@ class DashboardCertificateController extends Controller
     {
         // Berfungsi untuk menampilkan data sertifikat
         return view('dashboard.certificates.create', [
-            'pastisipants' => Certificate::all()
+            'certificates' => Certificate::all()
         ]);
     }
 
@@ -52,12 +52,12 @@ class DashboardCertificateController extends Controller
         $validatedData = $request->validate([
             'sertifikat_id' => 'required|unique:certificates|max:15',
             'nama' => 'required|max:255',
-            'partisipan' => 'required',
+            'partisipan' => 'required|max:255',
             'tema' => 'required|max:255',
             'tanggal' => 'required'
         ]);
 
-         // Berufungsi untuk menyimpan data ke database
+        // Berufungsi untuk menyimpan data ke database
         Certificate::create($validatedData);
 
         // Berfungsi untuk redicrect ke halaman dashboard certificates, bila berhasil tambah sertifikat akan menampilkan flash message
@@ -84,10 +84,14 @@ class DashboardCertificateController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    // Method show berfungsi untuk ubah data
+    // Method edit berfungsi untuk ubah data
     public function edit(Certificate $certificate)
     {
-        //
+        // Berfungsi untuk menampilkan data sertifikat
+        return view('dashboard.certificates.edit', [
+            'certificate' => $certificate,
+            'certificates' => Certificate::all()
+        ]);
     }
 
     /**
@@ -101,7 +105,30 @@ class DashboardCertificateController extends Controller
     // Method update berfungsi untuk memproses fitur ubah data
     public function update(Request $request, Certificate $certificate)
     {
-        //
+        // Berufungsi untuk memvalidasi data-data sertifikat sesuai yang diharapkan 
+        $rules = [
+            'nama' => 'required|max:255',
+            'partisipan' => 'required|max:255',
+            'tema' => 'required|max:255',
+            'tanggal' => 'required'
+        ];
+
+        // Berfungsi mengecek jika sertifikat id yang baru tidak sama dengan sertifikat id yang lama maka akan divalidaasi
+        if ($request->sertifikat_id != $certificate->sertifikat_id) {
+
+            // Validasi sertifikat_id
+            $rules['sertifikat_id'] = 'required|unique:certificates|max:15';
+        }
+
+        // Meyimpan fungsi validate ke valriabel $validatedData
+        $validatedData = $request->validate($rules);
+
+        // Berufungsi untuk menyimpan data ke database yang sudah di update
+        Certificate::where('id', $certificate->id)
+                        ->update($validatedData);
+
+        // Berfungsi untuk redicrect ke halaman dashboard certificates, bila berhasil update sertifikat akan menampilkan flash message
+        return redirect('/dashboard/certificates')->with('success', 'Certificate has been updated!');
     }
 
     /**
@@ -114,6 +141,10 @@ class DashboardCertificateController extends Controller
     // Method destroy berfungsi untuk menghapus data
     public function destroy(Certificate $certificate)
     {
-        //
+        // Berufungsi untuk menghapus data
+        Certificate::destroy($certificate->id);
+
+        // Berfungsi untuk redicrect ke halaman dashboard certificates, bila berhasil hapus data akan menampilkan flash message
+        return redirect('/dashboard/certificates')->with('success', 'Certificate has been deleted!');
     }
 }
