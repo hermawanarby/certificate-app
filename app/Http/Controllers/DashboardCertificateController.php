@@ -47,7 +47,21 @@ class DashboardCertificateController extends Controller
     // Method store berfungsi untuk menjalakan fitur tambah data
     public function store(Request $request)
     {
-        return $request;
+
+        // Berufungsi untuk memvalidasi data-data sertifikat sesuai yang diharapkan 
+        $validatedData = $request->validate([
+            'sertifikat_id' => 'required|unique:certificates|max:15',
+            'nama' => 'required|max:255',
+            'partisipan' => 'required',
+            'tema' => 'required|max:255',
+            'tanggal' => 'required'
+        ]);
+
+         // Berufungsi untuk menyimpan data ke database
+        Certificate::create($validatedData);
+
+        // Berfungsi untuk redicrect ke halaman dashboard certificates, bila berhasil tambah sertifikat akan menampilkan flash message
+        return redirect('/dashboard/certificates')->with('success', 'New certificate has been added!');
     }
 
     /**

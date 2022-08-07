@@ -12,27 +12,48 @@
                     @csrf
                     <div class="mb-3">
                       <label for="sertifikat_id" class="form-label">ID Sertifikat</label>
-                      <input type="text" class="form-control" id="sertifikat_id" name="sertifikat_id">
+                      <input type="text" class="form-control @error('sertifikat_id') is-invalid @enderror" id="sertifikat_id" placeholder="KSA-2022001" name="sertifikat_id" required autofocus value="{{ old('sertifikat_id') }}">
+                      @error('sertifikat_id')
+                          <div class="invalid-feedback">
+                            {{ $message }}
+                          </div>
+                      @enderror
                     </div>
                     <div class="mb-3">
                       <label for="nama" class="form-label">Nama</label>
-                      <input type="text" class="form-control" id="nama" name="nama">
+                      <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama" placeholder="Joko Ribowo" required value="{{ old('nama') }}">
+                      @error('nama')
+                          <div class="invalid-feedback">
+                            {{ $message }} 
+                          </div>
+                      @enderror
                     </div>
                     <div class="mb-3">
-                      <label for="partisipan" class="form-label">Partisipan</label>
-                      <select class="form-select" name="partisipan">
-                        @foreach ($pastisipants as $pastisipant)
-                            <option value="{{ $pastisipant->id }}">{{ $pastisipant->partisipan }}</option>
-                        @endforeach
-                      </select>
+                        <label for="partisipan" class="form-label">Partisipan</label>
+                        <input type="text" class="form-control @error('partisipan') is-invalid @enderror" id="partisipan" name="partisipan" placeholder="Peserta" required value="{{ old('partisipan') }}">
+                        @error('partisipan')
+                            <div class="invalid-feedback">
+                              {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label for="tema" class="form-label">Tema</label>
-                        <input type="text" class="form-control" id="tema" name="tema">
+                        <input type="text" class="form-control @error('tema') is-invalid @enderror" id="tema" name="tema" placeholder="Belajar Pemograman Javascript" required value="{{ old('tema') }}">
+                        @error('tema')
+                            <div class="invalid-feedback">
+                              {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label for="tanggal" class="form-label">Tanggal</label>
-                        <input type="date" class="form-control" id="tanggal" name="tanggal">
+                        <input type="date" class="form-control  @error('tanggal') is-invalid @enderror" id="tanggal" name="tanggal" required value="{{ old('tanggal') }}">
+                        @error('tanggal')
+                            <div class="invalid-feedback">
+                            {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                     <button type="submit" class="btn btn-primary">Tambah Sertifikat</button>
                 </form>
