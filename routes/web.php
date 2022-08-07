@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CertificateController;
+use App\Http\Controllers\DashboardCertificateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,4 +41,9 @@ Route::get('/register', [RegisterController::class, 'index']);
 Route::post('/register', [RegisterController::class, 'store']);
 
 // Route untuk menampilkan dashboard, ini hanya bisa diakases oleh user yang sudah login
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
+Route::get('/dashboard', function() {
+    return view('dashboard.index');
+})->middleware('auth');
+
+// Route untuk menjalankan fungsi dashboard CRUD
+Route::resource('dashboard/certificates', DashboardCertificateController::class)->middleware('auth');
