@@ -36,8 +36,12 @@
             <td>{{ $certificate->tema }}</td>
             <td>{{ $certificate->tanggal }}</td>
             <td>
-              <a href="#" class="badge bg-primary text-decoration-none link-light"><span data-feather="edit"></span> Edit</a>
-              <a href="#" class="badge bg-danger text-decoration-none link-light"><span data-feather="x-circle"></span> Delete</a>
+              <a href="/dashboard/certificates/{{ $certificate->id }}/edit" class="badge bg-primary text-decoration-none link-light"><span data-feather="edit"></span> Edit</a>
+              <form action="/dashboard/certificates/{{ $certificate->id }}" method="post" class="d-inline">
+                @method('delete')
+                @csrf
+                <button class="badge bg-danger border-0" onclick="return confirm('Yakin mau hapus data ini?')"><span data-feather="x-circle"></span> Delete</button>
+              </form>
             </td>
           </tr>
           @endforeach
