@@ -47,3 +47,6 @@ Route::get('/dashboard', function() {
 
 // Route untuk menjalankan fungsi dashboard CRUD
 Route::resource('dashboard/certificates', DashboardCertificateController::class)->middleware('auth');
+
+// Menampilkan PDF
+// Route::post('/sertifikat', [CertificateController::class, 'viewPDF']);
