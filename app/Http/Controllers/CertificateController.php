@@ -14,13 +14,16 @@ class CertificateController extends Controller
         if ($request->search == null) {
             return view('/sertifikat');
         }
+
         $certificate = Certificate::all()->where('sertifikat_id','=',($request->search));
-        // return view('sertifikat',['sertifikat'=>$certificate]);
-        
-        $pdf = PDF::loadHTML($certificate)
-        ->setPaper('a4', 'landscape');
-        
-        return $pdf->stream();
+        if($certificate->count() > 0) {
+            $pdf = PDF::loadView('/sertifikat.template', ['sertifikat'=>$certificate])
+            ->setPaper('a4', 'landscape');
+            
+            return $pdf->stream();
+        } else {
+            return view('/sertifikat');
+        }
         
     }
 }
