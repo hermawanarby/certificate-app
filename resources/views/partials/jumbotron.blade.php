@@ -1,4 +1,3 @@
-{{-- Login --}}
 <section class="vh-100 gradient-custom login">
   <div class="background"></div>
   
@@ -8,16 +7,25 @@
         <div class="card bg-dark text-white" style="border-radius: 1rem;">
           <div class="card-body p-5 text-center">
 
-            <form action="/sertifikat" method="GET">
+            <form action="/sertifikat" method="POST">
+              @csrf
               <div class="mb-md-5 mt-md-4">
                 <div class="mb-4">
                   <img src="/img/logo1.png" width="100" alt="TitiKoma" class="img-fluid">
                 </div>
                 <h2 class="fw-bold mb-2 text-uppercase">Validate Certificate</h2>
                 <p class="text-white-50 mb-5">Please enter your id certificate!</p>
+
+                {{-- Menampilkan alert data sertifikat tidak ditemukan --}}
+                @if (session('alert'))
+                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{ session('alert') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+                @endif
   
                 <div class="input-group form-outline form-white mb-4">
-                  <input type="text" placeholder="Enter Certificate ID" class="form-control form-control-lg" name="search" required/>
+                  <input type="text" placeholder="Enter Certificate ID" class="form-control form-control-lg" name="verifikasi" required/>
                   <button class="btn btn-outline-light btn-lg px-5" type="submit">Validate</button>
                 </div>
                 <p class="mb-0">The Certificate ID can be found at the E-Ticket of each others.
@@ -34,4 +42,3 @@
     </div>
   </div>
 </section>
-{{-- Akhir Login --}}

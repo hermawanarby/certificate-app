@@ -23,7 +23,8 @@ Route::get('/', function () {
 });
 
 // Route untuk menampilkan sertifikat
-Route::get('/sertifikat', [CertificateController::class, 'search']);
+// Note: jika menggunakan Route POST maka akan error
+Route::match(['get', 'post'], '/sertifikat', [CertificateController::class, 'verifikasi']);
 
 // Route untuk menampilkan login, ini hanya bisa diakases oleh user yang belum terauntentikasi
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
@@ -47,6 +48,3 @@ Route::get('/dashboard', function() {
 
 // Route untuk menjalankan fungsi dashboard CRUD
 Route::resource('dashboard/certificates', DashboardCertificateController::class)->middleware('auth');
-
-// Menampilkan PDF
-// Route::post('/sertifikat', [CertificateController::class, 'viewPDF']);
