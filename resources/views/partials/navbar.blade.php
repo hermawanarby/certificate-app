@@ -1,6 +1,9 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar-primary py-3 shadow p-3 mb-5 bg-white">
     <div class="container">
-        <a class="navbar-brand" href="/"><i class="bi bi-award-fill"></i> CERTIFICATE APP</a>
+        <a class="navbar-brand" style="margin-right: 33px"  href="/">
+            <img src="/img/logo1.png" width="50" height="50" alt="" style="border-radius: 50px; margin-right: 10px;">
+            <span>Validate Certificate | SahloFolina</span>
+        </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

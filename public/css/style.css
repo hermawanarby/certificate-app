@@ -1,3 +1,15 @@
+body { 
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: #212529 !important;
+    height: 100%;
+    background-image: linear-gradient(to bottom, rgba(128, 128, 128, 0.52), rgba(12, 12, 12, 12)), url(/img/background.jpg); 
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .form-signin .form-floating:focus-within {
     z-index: 2;
 }
@@ -17,4 +29,9 @@
 .form-registation input {
     border-radius: 0;
     margin-bottom: -1px;
+}
+
+#footer {
+    background-color: white;
+    padding: 10px;
 }

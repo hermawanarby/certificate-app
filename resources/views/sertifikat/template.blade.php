@@ -6,4 +6,4 @@
     <p>{{'Partisipan: ' . $s->partisipan }}</p> <br>
     <p>{{'Tema: ' . $s->tema }}</p> <br>
     <p>{{'Tanggal: ' . $s->tanggal }}</p> <br>
-@endforeach
+    @endforeach
