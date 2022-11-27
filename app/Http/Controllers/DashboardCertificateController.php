@@ -23,7 +23,11 @@ class DashboardCertificateController extends Controller
         return view('dashboard.certificates.index', [
             'certificates' => Certificate::all()
         ]);
+
+        // Berfungsi untuk menampilkan data sertifikat
+        return view('dashboard.member.index', []);
     }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -53,7 +57,7 @@ class DashboardCertificateController extends Controller
 
         // Berufungsi untuk memvalidasi data-data sertifikat sesuai yang diharapkan 
         $validatedData = $request->validate([
-            'sertifikat_id' => 'required|unique:certificates|max:15',
+            'sertifikat_id' => 'required|unique:certificates|max:35',
             'nama' => 'required|max:255',
             'partisipan' => 'required|max:255',
             'tema' => 'required|max:255',

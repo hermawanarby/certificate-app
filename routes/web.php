@@ -5,6 +5,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\DashboardCertificateController;
+use App\Http\Controllers\DashboardMemberController;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,3 +50,15 @@ Route::get('/dashboard', function() {
 
 // Route untuk menjalankan fungsi dashboard CRUD
 Route::resource('dashboard/certificates', DashboardCertificateController::class)->middleware('auth');
+
+// Route untuk menjalankan fungsi generate sertifikat dengan import
+Route::resource('dashboard/member', DashboardMemberController::class)->middleware('auth');
+
+// Route untuk menjalankan fungsi import data
+Route::post('dashboard/member', [DashboardMemberController::class, 'importData'])->name('certificate.import_data');
+
+Route::post('dashboard/member/truncate', [DashboardMemberController::class, 'MemberTruncate'])->name('certificate.truncate');
+
+Route::post('dashboard/member/certificate', [DashboardMemberController::class, 'getCertificate'])->name('certificate.certificate');
+
+

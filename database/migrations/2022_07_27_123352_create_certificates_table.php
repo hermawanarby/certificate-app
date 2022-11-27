@@ -19,7 +19,7 @@ class CreateCertificatesTable extends Migration
             $table->string('nama');
             $table->string('partisipan');
             $table->string('tema');
-            $table->date('tanggal');
+            $table->string('tanggal');
             $table->rememberToken();
             $table->timestamps();
         });
