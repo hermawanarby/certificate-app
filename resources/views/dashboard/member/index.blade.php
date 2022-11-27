@@ -2,13 +2,12 @@
 
 @section('container')
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Certificates</h1>
+        <h1 class="h2">Member</h1>
     </div>
 
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">Table</div>
+            <div class="card mb-5">
                 <div class="card-body">
                     <form action="{{ route('certificate.import_data') }}" method="post" enctype="multipart/form-data">
                         @csrf
@@ -44,42 +43,46 @@
                     <form action="{{ route ('certificate.truncate') }}" method="post">
                         @csrf
                         <div class="d-grid mt-3 mb-3">
-                            <button type="submit" class="btn btn-danger">Delete All</button>
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Yakin mau hapus semua data ini?')">Delete All</button>
                         </div>
                     </form>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">ID Sertifikat</th>
-                                <th scope="col">Nama</th>
-                                <th scope="col">Partisipan</th>
-                                <th scope="col" class="col-lg-4">Tema</th>
-                                <th scope="col">Tanggal</th>
-                                <th scope="col">Certificate</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($certificates as $key => $certificate)
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
                                 <tr>
-                                    <td>{{ $key + 1 }}</td>
-                                    <td>{{ $certificate->sertifikat_id }}</td>
-                                    <td>{{ $certificate->nama }}</td>
-                                    <td>{{ $certificate->partisipan }}</td>
-                                    <td>{{ $certificate->tema }}</td>
-                                    <td>{{ $certificate->tanggal }}</td>
-                                    <td>
-                                        <form action="{{ route ('certificate.certificate') }}" method="post">
-                                            @csrf
-                                            <input type="hidden" name="user_id" value="{{ $certificate->id }}">
-                                            <button class="btn btn-link" type="submit">Download</button>
-                                        </form>
-                                    </td>
-                                </tr>    
-                            @endforeach
-                            
-                        </tbody>
-                    </table>
+                                    <th scope="col">#</th>
+                                    <th scope="col">ID Sertifikat</th>
+                                    <th scope="col">Nama</th>
+                                    <th scope="col">Partisipan</th>
+                                    <th scope="col">Tema</th>
+                                    <th scope="col" class="col-lg-2">Tanggal</th>
+                                    <th scope="col">Certificate</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($certificates as $index => $certificate)
+                                    <tr>
+                                        <td>{{ $index + $certificates->firstItem() }}</td>
+                                        <td>{{ $certificate->sertifikat_id }}</td>
+                                        <td>{{ $certificate->nama }}</td>
+                                        <td>{{ $certificate->partisipan }}</td>
+                                        <td>{{ $certificate->tema }}</td>
+                                        <td>{{ $certificate->tanggal }}</td>
+                                        <td>
+                                            <form action="{{ route ('certificate.certificate') }}" method="post">
+                                                @csrf
+                                                <input type="hidden" name="user_id" value="{{ $certificate->id }}">
+                                                <button type="submit" class="badge bg-success text-decoration-none border-0 link-light"> <span data-feather="download"></span> Download</button>
+                                            </form>
+                                        </td>
+                                    </tr>    
+                                @endforeach
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    {{ $certificates->links() }}
                 </div>
             </div>
         </div>

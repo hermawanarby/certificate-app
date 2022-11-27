@@ -21,7 +21,7 @@ class DashboardCertificateController extends Controller
 
         // Berfungsi untuk menampilkan data sertifikat
         return view('dashboard.certificates.index', [
-            'certificates' => Certificate::all()
+            'certificates' => Certificate::paginate(5)
         ]);
 
         // Berfungsi untuk menampilkan data sertifikat

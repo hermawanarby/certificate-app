@@ -13,30 +13,30 @@
     @endif
 
     <div class="table-responsive">
-      <a href="/dashboard/certificates/create" class="btn btn-success btn-sm mb-3"><span data-feather="plus"></span> Tambah data sertifikat</a>
-      <table class="table table-striped table-sm">
+      <a href="/dashboard/certificates/create" class="btn btn-primary btn-sm mb-3"><span data-feather="plus"></span> Tambah data sertifikat</a>
+      <table class="table table-striped">
         <thead>
           <tr>
             <th scope="col">#</th>
             <th scope="col">ID Sertifikat</th>
             <th scope="col">Nama</th>
             <th scope="col">Partisipan</th>
-            <th scope="col" class="col-lg-4">Tema</th>
-            <th scope="col">Tanggal</th>
+            <th scope="col">Tema</th>
+            <th scope="col" class="col-lg-2">Tanggal</th>
             <th scope="col">Aksi</th>
           </tr>
         </thead>
         <tbody>
-          @foreach ($certificates as $certificate)
+          @foreach ($certificates as $index => $certificate)
           <tr>
-            <td>{{ $loop->iteration }}</td>
+            <td>{{ $index + $certificates->firstItem() }}</td>
             <td>{{ $certificate->sertifikat_id }}</td>
             <td>{{ $certificate->nama }}</td>
             <td>{{ $certificate->partisipan }}</td>
             <td>{{ $certificate->tema }}</td>
             <td>{{ $certificate->tanggal }}</td>
             <td>
-              <a href="/dashboard/certificates/{{ $certificate->id }}/edit" class="badge bg-primary text-decoration-none link-light"><span data-feather="edit"></span> Edit</a>
+              <a href="/dashboard/certificates/{{ $certificate->id }}/edit" class="badge bg-success text-decoration-none link-light"><span data-feather="edit"></span> Edit</a>
               <form action="/dashboard/certificates/{{ $certificate->id }}" method="post" class="d-inline">
                 @method('delete')
                 @csrf
@@ -47,5 +47,6 @@
           @endforeach
         </tbody>
       </table>
+      {{ $certificates->links() }}
     </div>
 @endsection

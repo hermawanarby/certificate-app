@@ -12,7 +12,7 @@
                     @csrf
                     <div class="mb-3">
                       <label for="sertifikat_id" class="form-label">ID Sertifikat</label>
-                      <input type="text" class="form-control @error('sertifikat_id') is-invalid @enderror" id="sertifikat_id" placeholder="KSA-2022001" name="sertifikat_id" required autofocus value="{{ old('sertifikat_id') }}">
+                      <input type="text" class="form-control @error('sertifikat_id') is-invalid @enderror" id="sertifikat_id" placeholder="001/WBPHP.11.27/SF/2022" name="sertifikat_id" required autofocus value="{{ old('sertifikat_id') }}">
                       @error('sertifikat_id')
                           <div class="invalid-feedback">
                             {{ $message }}
@@ -21,7 +21,7 @@
                     </div>
                     <div class="mb-3">
                       <label for="nama" class="form-label">Nama</label>
-                      <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama" placeholder="Joko Ribowo" required value="{{ old('nama') }}">
+                      <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama" placeholder="Alief Fathurrohman" required value="{{ old('nama') }}">
                       @error('nama')
                           <div class="invalid-feedback">
                             {{ $message }} 
@@ -30,7 +30,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="partisipan" class="form-label">Partisipan</label>
-                        <input type="text" class="form-control @error('partisipan') is-invalid @enderror" id="partisipan" name="partisipan" placeholder="Peserta" required value="{{ old('partisipan') }}">
+                        <input type="number" class="form-control @error('partisipan') is-invalid @enderror" id="partisipan" name="partisipan" placeholder="123" required value="{{ old('partisipan') }}">
                         @error('partisipan')
                             <div class="invalid-feedback">
                               {{ $message }}

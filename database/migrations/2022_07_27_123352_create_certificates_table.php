@@ -17,7 +17,7 @@ class CreateCertificatesTable extends Migration
             $table->id();
             $table->string('sertifikat_id');
             $table->string('nama');
-            $table->string('partisipan');
+            $table->integer('partisipan');
             $table->string('tema');
             $table->string('tanggal');
             $table->rememberToken();

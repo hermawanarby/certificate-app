@@ -20,7 +20,7 @@ class DashboardMemberController extends Controller
 
         // Berfungsi untuk menampilkan data sertifikat
         return view('dashboard.member.index', [
-            'certificates' => Certificate::latest()->get()
+            'certificates' => Certificate::paginate(5)
         ]);
     }
 

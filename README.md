@@ -43,6 +43,20 @@ Berikut ini cara instalasi dari project:
     php artisan migrate:fresh
     ```
 
+- Install library terlebih dahulu
+    - [Library laravel dompdf](https://github.com/barryvdh/laravel-dompdf#laravel)
+        ```bash
+        composer require barryvdh/laravel-dompdf
+        ```
+    - [Library laravel excel](https://docs.laravel-excel.com/3.1/getting-started/installation.html)
+        ```bash
+        composer require maatwebsite/excel
+        ```
+    - [Library laravel gd text](https://github.com/stil/gd-text#installation-via-composer)
+        ```bash
+        composer require stil/gd-text
+        ```
+
 - Menjalankan development server
     ```bash
     php artisan serve
