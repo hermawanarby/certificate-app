@@ -13,7 +13,21 @@
     @endif
 
     <div class="table-responsive">
-      <a href="/dashboard/certificates/create" class="btn btn-primary btn-sm mb-3"><span data-feather="plus"></span> Tambah data sertifikat</a>
+      <div class="row" style="margin-right: 0">
+        <div class="col mt-3">
+          <a href="/dashboard/certificates/create" class="btn btn-primary btn-sm mb-3"><span data-feather="plus"></span> Tambah data sertifikat</a>
+        </div>
+        <div class="col-md-3">
+          <form action="/dashboard/certificates" method="GET">
+            <div class="input-group input-group-sm mb-3 mt-3">
+              <input type="text" name="search" class="form-control" placeholder="Cari...">
+              <button class="btn btn-primary" type="submit"><span data-feather="search"></span></button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+
       <table class="table table-striped">
         <thead>
           <tr>
@@ -26,6 +40,7 @@
             <th scope="col">Aksi</th>
           </tr>
         </thead>
+
         <tbody>
           @foreach ($certificates as $index => $certificate)
           <tr>
@@ -46,6 +61,7 @@
           </tr>
           @endforeach
         </tbody>
+
       </table>
       {{ $certificates->links() }}
     </div>

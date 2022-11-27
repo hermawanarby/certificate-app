@@ -14,18 +14,24 @@ class DashboardCertificateController extends Controller
      */
 
     // Method index berfungsi untuk menampilkan data
-    public function index()
+    public function index(Request $request)
     {
         // Hanya admin yang bisa akses
         $this->authorize('admin');
 
         // Berfungsi untuk menampilkan data sertifikat
-        return view('dashboard.certificates.index', [
-            'certificates' => Certificate::paginate(5)
-        ]);
+        // return view('dashboard.certificates.index', [
+        //     'certificates' => Certificate::paginate(5)
+        // ]);
 
-        // Berfungsi untuk menampilkan data sertifikat
-        return view('dashboard.member.index', []);
+        if ($request->has('search')) {
+            $certificates = Certificate::where('nama', 'like', '%' . $request->search . '%')->paginate(5);
+        } else {
+            $certificates = Certificate::paginate(5);
+        }
+
+        return view('dashboard.certificates.index', compact('certificates'));
+
     }
     
 
