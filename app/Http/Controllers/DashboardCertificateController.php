@@ -16,6 +16,9 @@ class DashboardCertificateController extends Controller
     // Method index berfungsi untuk menampilkan data
     public function index()
     {
+        // Hanya admin yang bisa akses
+        $this->authorize('admin');
+
         // Berfungsi untuk menampilkan data sertifikat
         return view('dashboard.certificates.index', [
             'certificates' => Certificate::all()

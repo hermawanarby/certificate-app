@@ -7,12 +7,16 @@
             Dashboard
           </a>
         </li>
+
+        @can('admin')
         <li class="nav-item">
           <a class="nav-link {{ Request::is('dashboard/certificates*') ? 'active' : '' }}" href="/dashboard/certificates">
             <span data-feather="award" class="align-text-bottom"></span>
             Certificates
           </a>
         </li>
+        @endcan
+
       </ul>
     </div>
 </nav>
