@@ -19,17 +19,17 @@ class DashboardCertificateController extends Controller
         // Hanya admin yang bisa akses
         $this->authorize('admin');
 
-        // Berfungsi untuk menampilkan data sertifikat
-        // return view('dashboard.certificates.index', [
-        //     'certificates' => Certificate::paginate(5)
-        // ]);
-
+        // Jika data yang di cari ada maka akan di tampilkan datanya
         if ($request->has('search')) {
-            $certificates = Certificate::where('nama', 'like', '%' . $request->search . '%')->paginate(5);
+            $certificates = Certificate::where('sertifikat_id', 'like', '%' . $request->search . '%')
+                                       ->orWhere('nama', 'like', '%' . $request->search . '%')
+                                       ->orWhere('tema', 'like', '%' . $request->search . '%')->paginate(5);
         } else {
+            // Jika tidak ada maka semua data akan ditampilkan
             $certificates = Certificate::paginate(5);
         }
 
+        // Berfungsi untuk menampilkan data sertifikat
         return view('dashboard.certificates.index', compact('certificates'));
 
     }
