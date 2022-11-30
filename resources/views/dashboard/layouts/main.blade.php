@@ -10,6 +10,10 @@
     
     <!-- Custom styles for this template -->
     <link href="/css/dashboard.css" rel="stylesheet">
+
+    {{-- My CSS --}}
+    <link rel="stylesheet" href="/css/admin.css">
+    
   </head>
   <body>
     

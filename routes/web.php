@@ -5,6 +5,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\DashboardCertificateController;
+use App\Http\Controllers\DashboardHomeController;
 use App\Http\Controllers\DashboardMemberController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -44,9 +45,11 @@ Route::get('/register', [RegisterController::class, 'index']);
 Route::post('/register', [RegisterController::class, 'store']);
 
 // Route untuk menampilkan dashboard, ini hanya bisa diakases oleh user yang sudah login
-Route::get('/dashboard', function() {
-    return view('dashboard.index');
+Route::get('/dashboard/home', function() {
+    return view('dashboard.home');
 })->middleware('auth');
+
+Route::resource('/dashboard/home', DashboardHomeController::class)->middleware('auth');
 
 // Route untuk menjalankan fungsi dashboard CRUD
 Route::resource('dashboard/certificates', DashboardCertificateController::class)->middleware('auth');

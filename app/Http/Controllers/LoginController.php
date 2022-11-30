@@ -30,7 +30,7 @@ class LoginController extends Controller
             $request->session()->regenerate();
 
             // Berfungsi untuk redirect ke halaman dashboard bila berhasil login
-            return redirect()->intended('/dashboard');
+            return redirect()->intended('/dashboard/home');
         }
 
         // Berfungsi untuk mengembalikan ke halaman login bila user salah memasukan akun,

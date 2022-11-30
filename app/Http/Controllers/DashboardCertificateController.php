@@ -29,8 +29,10 @@ class DashboardCertificateController extends Controller
             $certificates = Certificate::paginate(5);
         }
 
+        $anggota = Certificate::count();
+
         // Berfungsi untuk menampilkan data sertifikat
-        return view('dashboard.certificates.index', compact('certificates'));
+        return view('dashboard.certificates.index', compact('certificates', 'anggota'));
 
     }
     
