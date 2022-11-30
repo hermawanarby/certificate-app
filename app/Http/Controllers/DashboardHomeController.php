@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Carbon\Carbon;
 use App\Models\Certificate;
+use Illuminate\Http\Request;
+
 class DashboardHomeController extends Controller
 {
     /**
@@ -13,8 +15,17 @@ class DashboardHomeController extends Controller
      */
     public function index()
     {
+        // Menghitung jumlah total member
         $members = Certificate::where('nama', 0)->count();
-        return view('dashboard.home', compact('members'));
+
+        // Menampilkan data sertifikat terbaru bersarkan tanggal
+        $certificates = Certificate::latest('tanggal')->skip(0)->take(3)->get();
+
+        // Menampilkan tanggal di halam home
+        $date = Carbon::now();
+        $date->toDateTimeString();
+
+        return view('dashboard.home', compact('members', 'certificates', 'date'));
     }
 
     /**

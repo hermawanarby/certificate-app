@@ -67,7 +67,7 @@
                                         <td>{{ $certificate->nama }}</td>
                                         <td>{{ $certificate->partisipan }}</td>
                                         <td>{{ $certificate->tema }}</td>
-                                        <td>{{ $certificate->tanggal }}</td>
+                                        <td>{{ date('d F Y', strtotime($certificate->tanggal)); }}</td>
                                         <td>
                                             <form action="{{ route ('certificate.certificate') }}" method="post">
                                                 @csrf
