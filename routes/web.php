@@ -7,6 +7,7 @@ use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\DashboardCertificateController;
 use App\Http\Controllers\DashboardHomeController;
 use App\Http\Controllers\DashboardMemberController;
+use App\Models\Certificate;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -22,8 +23,12 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 // Route untuk menampilkan halaman home
 Route::get('/', function () {
-    return view('home');
+    return view('home', [
+        'certificates' => Certificate::latest()->paginate(5)
+    ]);
 });
+
+Route::resource('/dashboard/home', DashboardHomeController::class)->middleware('auth');
 
 // Route untuk menampilkan sertifikat
 // Note: jika menggunakan Route POST maka akan error
