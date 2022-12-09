@@ -15,12 +15,6 @@
             Certificates
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link {{ Request::is('dashboard/member*') ? 'active' : '' }}" href="/dashboard/member">
-            <span data-feather="users" class="align-text-bottom"></span>
-            Member
-          </a>
-        </li>
         @endcan
 
       </ul>

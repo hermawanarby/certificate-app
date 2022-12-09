@@ -30,9 +30,9 @@
                       @enderror
                     </div>
                     <div class="mb-3">
-                        <label for="partisipan" class="form-label">Partisipan</label>
-                        <input type="text" class="form-control @error('partisipan') is-invalid @enderror" id="partisipan" name="partisipan" placeholder="Peserta" required value="{{ old('partisipan',  $certificate->partisipan) }}">
-                        @error('partisipan')
+                        <label for="lokasi" class="form-label">Lokasi</label>
+                        <input type="text" class="form-control @error('lokasi') is-invalid @enderror" id="lokasi" name="lokasi" placeholder="Zoom-Meeting" required value="{{ old('lokasi',  $certificate->lokasi) }}">
+                        @error('lokasi')
                             <div class="invalid-feedback">
                               {{ $message }}
                             </div>

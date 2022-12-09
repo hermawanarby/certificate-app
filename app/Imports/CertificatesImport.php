@@ -22,7 +22,7 @@ class CertificatesImport implements ToModel
                 //
                 'sertifikat_id' => $row[0],
                 'nama' => $row[1],
-                'partisipan' => $row[2],
+                'lokasi' => $row[2],
                 'tema' => $row[3],
                 'tanggal' => $row[4],
             ]);

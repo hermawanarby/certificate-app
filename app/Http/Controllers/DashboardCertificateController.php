@@ -65,7 +65,7 @@ class DashboardCertificateController extends Controller
         $validatedData = $request->validate([
             'sertifikat_id' => 'required|unique:certificates|max:35',
             'nama' => 'required|max:255',
-            'partisipan' => 'required|max:255',
+            'lokasi' => 'required|max:255',
             'tema' => 'required|max:255',
             'tanggal' => 'required'
         ]);
@@ -121,7 +121,7 @@ class DashboardCertificateController extends Controller
         // Berufungsi untuk memvalidasi data-data sertifikat sesuai yang diharapkan 
         $rules = [
             'nama' => 'required|max:255',
-            'partisipan' => 'required|max:255',
+            'lokasi' => 'required|max:255',
             'tema' => 'required|max:255',
             'tanggal' => 'required'
         ];

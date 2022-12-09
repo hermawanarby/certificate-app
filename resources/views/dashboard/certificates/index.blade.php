@@ -11,6 +11,54 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
     @endif
+    
+    {{-- FITUR IMPORT --}}
+    <div class="row justify-content-center">
+      <div class="col-md-12">
+        <div class="card mb-5">
+          <div class="card-body">
+            <form action="{{ route('certificate.import_data') }}" method="post" enctype="multipart/form-data">
+              @csrf
+              <div class="row">
+                <div class="col-md-6">
+                    <label for="my_file" class="form-label">Xls, xlsx or csv</label>
+                    <input type="file" name="my_file" id="my_file" class="form-control @error('my_file') is-invalid @enderror">
+                    @error('my_file')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
+                <div class="col-md-6">
+                    <label for="fungsi" class="form-label">Fungsi</label>
+                    <select name="fungsi" id="fungsi" class="form-select @error('fungsi') is-invalid @enderror">
+                        <option selected hidden disabled>Pilih Fungsi</option>
+                        <option value="1">Hapus & Buat Baru</option>
+                        <option value="2">Tambahkan</option>
+                    </select>
+                    @error('fungsi')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
+                <div class="d-grid mt-3">
+                    <button class="btn btn-primary">Upload File</button>
+                </div>
+              </div>
+            </form>
+            
+            <form action="{{ route ('certificate.truncate') }}" method="post">
+              @csrf
+              <div class="d-grid mt-3 mb-3">
+                  <button type="submit" class="btn btn-danger" onclick="return confirm('Yakin mau hapus semua data ini?')">Delete All</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{-- AKHIR FITUR IMPORT --}}
 
     <div class="table-responsive">
       <div class="row" style="margin-right: 0">
@@ -34,7 +82,7 @@
             <th scope="col">#</th>
             <th scope="col">ID Sertifikat</th>
             <th scope="col">Nama</th>
-            <th scope="col">Partisipan</th>
+            <th scope="col">Lokasi</th>
             <th scope="col">Tema</th>
             <th scope="col" class="col-lg-2">Tanggal</th>
             <th scope="col">Aksi</th>
@@ -47,7 +95,7 @@
             <td>{{ $index + $certificates->firstItem() }}</td>
             <td>{{ $certificate->sertifikat_id }}</td>
             <td>{{ $certificate->nama }}</td>
-            <td>{{ $certificate->partisipan }}</td>
+            <td>{{ $certificate->lokasi }}</td>
             <td>{{ $certificate->tema }}</td>
             <td>{{ date('d F Y', strtotime($certificate->tanggal)); }}</td>
             <td>
