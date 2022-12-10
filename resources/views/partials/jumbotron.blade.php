@@ -26,14 +26,7 @@
   
                 <div class="input-group form-outline form-white mb-4">
                   <input type="text" placeholder="Enter Certificate ID" class="form-control form-control-lg" name="verifikasi" required/>
-                  @foreach ($certificates as $index => $certificate)
-                    <form action="{{ route ('certificate.certificate') }}" method="post">
-                        @csrf
-                        <input type="hidden" name="user_id" value="{{ $certificate->id }}">
-                        <button type="submit" class="btn btn-outline-light btn-lg px-5">Validate</button>
-                    </form>
-                  @endforeach
-                  {{-- <button class="btn btn-outline-light btn-lg px-5" type="submit">Validate</button> --}}
+                  <button type="submit" class="btn btn-outline-light btn-lg px-5">Validate</button>
                 </div>
                 <p class="mb-0">The Certificate ID can be found at the E-Ticket of each others.
                 <hr>

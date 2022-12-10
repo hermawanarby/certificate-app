@@ -14,55 +14,55 @@ class CertificateController extends Controller
     {
         $certificate = Certificate::all()->where('sertifikat_id','=',($request->verifikasi));
         if($certificate->count() > 0) {
-            $user = Certificate::find($request->user_id);
-            $name = $user->nama;
-            $sertifikat = $user->sertifikat_id;
-            $tanggal = $user->tanggal;
+            foreach ($certificate as $s) {
+                
 
-            $im = imagecreatefrompng('certificate/certificate-1.png');
-            $font_family = public_path('fonts/Roboto-Regular.ttf');
+                $im = imagecreatefrompng('certificate/certificate-1.png');
+                $font_family = public_path('fonts/Roboto-Regular.ttf');
+                
+                $box = new Box($im);
+                $box->setFontFace($font_family);
+                $box->setFontColor(new Color(0,0,0,0));
+                $box->setFontSize(100);
+                $box->setBox(
+                    0,
+                    -80,
+                    imagesx($im),
+                    imagesy($im)
+                );
+                $box->setTextAlign('center','center');
+                $box->draw($s->nama);
+
+                $box = new Box($im);
+                $box->setFontFace($font_family);
+                $box->setFontColor(new Color(0,0,0,0));
+                $box->setFontSize(50);
+                $box->setBox(
+                    0,
+                    -550,
+                    imagesx($im),
+                    imagesy($im)
+                );
+                $box->setTextAlign('center','center');
+                $box->draw($s->sertifikat_id);
+
+                $box = new Box($im);
+                $box->setFontFace($font_family);
+                $box->setFontColor(new Color(0,0,0,0));
+                $box->setFontSize(50);
+                $box->setBox(
+                    650,
+                    750,
+                    imagesx($im),
+                    imagesy($im)
+                );
+                $box->setTextAlign('left','center');
+                $box->draw($s->tanggal);
+
+                header("content-type: image/png");
+                imagepng($im);
+            }
             
-            $box = new Box($im);
-            $box->setFontFace($font_family);
-            $box->setFontColor(new Color(0,0,0,0));
-            $box->setFontSize(100);
-            $box->setBox(
-                0,
-                -80,
-                imagesx($im),
-                imagesy($im)
-            );
-            $box->setTextAlign('center','center');
-            $box->draw($name);
-
-            $box = new Box($im);
-            $box->setFontFace($font_family);
-            $box->setFontColor(new Color(0,0,0,0));
-            $box->setFontSize(50);
-            $box->setBox(
-                0,
-                -550,
-                imagesx($im),
-                imagesy($im)
-            );
-            $box->setTextAlign('center','center');
-            $box->draw($sertifikat);
-
-            $box = new Box($im);
-            $box->setFontFace($font_family);
-            $box->setFontColor(new Color(0,0,0,0));
-            $box->setFontSize(50);
-            $box->setBox(
-                650,
-                750,
-                imagesx($im),
-                imagesy($im)
-            );
-            $box->setTextAlign('left','center');
-            $box->draw($tanggal);
-
-            header("content-type: image/png");
-            imagepng($im);
         } else {
             return redirect('/')->with('alert','Data Not Found!');
         }
