@@ -1,13 +1,14 @@
 <?php
 
+use App\Models\Certificate;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\CertificateController;
-use App\Http\Controllers\DashboardCertificateController;
 use App\Http\Controllers\DashboardHomeController;
 use App\Http\Controllers\DashboardMemberController;
-use App\Models\Certificate;
+use App\Http\Controllers\DashboardProfileController;
+use App\Http\Controllers\DashboardCertificateController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -69,4 +70,4 @@ Route::post('dashboard/member/truncate', [DashboardMemberController::class, 'Mem
 
 Route::post('dashboard/member/certificate', [DashboardMemberController::class, 'getCertificate'])->name('certificate.certificate');
 
-
+Route::resource('/dashboard/profile', DashboardProfileController::class)->middleware('auth');
