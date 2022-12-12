@@ -13,7 +13,10 @@
                 </div>
                 <h5 class="card-title">TOTAL MEMBER</h5>
                 <div class="display-4">{{ $members }}</div>
-                <a href="/dashboard/member" class="text-decoration-none"><p class="card-text text-white">Lihat Detail <span data-feather="chevrons-right"></span></p></a>
+
+                @can('admin')
+                <a href="/dashboard/certificates" class="text-decoration-none"><p class="card-text text-white">Lihat Detail <span data-feather="chevrons-right"></span></p></a>
+                @endcan
             </div>
         </div>
 
@@ -23,19 +26,25 @@
                     <span style="width: 100px; height: 100px" data-feather="award"></span>
                 </div>
                 <h5 class="card-title">TOTAL TEMA</h5>
-                <div class="display-4">8</div>
-                <a href="#" class="text-decoration-none"><p class="card-text text-white">Lihat Detail <span data-feather="chevrons-right"></span></p></a>
+                <div class="display-4">{{ $tema }}</div>
+
+                @can('admin')
+                <a href="/dashboard/certificates" class="text-decoration-none"><p class="card-text text-white">Lihat Detail <span data-feather="chevrons-right"></span></p></a>
+                @endcan
             </div>
         </div>
 
         <div class="card bg-danger" style="width: 18rem; margin-left: 10px">
             <div class="card-body">
                 <div class="card-body-icon">
-                    <span style="width: 100px; height: 100px" data-feather="users"></span>
+                    <span style="width: 100px; height: 100px" data-feather="map"></span>
                 </div>
-                <h5 class="card-title">LOREM IPSUM</h5>
-                <div class="display-4">10</div>
-                <a href="#" class="text-decoration-none"><p class="card-text text-white">Lihat Detail <span data-feather="chevrons-right"></span></p></a>
+                <h5 class="card-title">TOTAL LOKASI</h5>
+                <div class="display-4">{{ $lokasi }}</div>
+
+                @can('admin')
+                <a href="/dashboard/certificates" class="text-decoration-none"><p class="card-text text-white">Lihat Detail <span data-feather="chevrons-right"></span></p></a>
+                @endcan
             </div>
         </div>
 
@@ -46,7 +55,9 @@
             <h4><span data-feather="file-text" style="width: 21px; height: 21px"></span> Data Terbaru</h4>
             <hr>
             <table class="table">
-                <caption><a href="/dashboard/member" class="link-secondary text-decoration-none">Lihat detail <span data-feather="chevrons-right"></a></caption>
+                @can('admin')
+                <caption><a href="/dashboard/certificates" class="link-secondary text-decoration-none">Lihat detail <span data-feather="chevrons-right"></a></caption>
+                @endcan
                 <thead>
                     <tr>
                         <th scope="col">#</th>

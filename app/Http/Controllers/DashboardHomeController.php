@@ -18,6 +18,12 @@ class DashboardHomeController extends Controller
         // Menghitung jumlah total member
         $members = Certificate::where('nama', 0)->count();
 
+        // Menghitung jumlah total tema
+        $tema = Certificate::where('tema', 0)->count();
+
+        // Menghitung jumlah total lokasi
+        $lokasi = Certificate::where('lokasi', 0)->count();
+
         // Menampilkan data sertifikat terbaru bersarkan tanggal
         $certificates = Certificate::latest('tanggal')->skip(0)->take(3)->get();
 
@@ -25,7 +31,7 @@ class DashboardHomeController extends Controller
         $date = Carbon::now();
         $date->toDateTimeString();
 
-        return view('dashboard.home', compact('members', 'certificates', 'date'));
+        return view('dashboard.home', compact('members', 'certificates', 'date', 'tema', 'lokasi'));
     }
 
     /**
